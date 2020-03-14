@@ -30,22 +30,21 @@ class AzizFixtures extends Fixture
         $prof_caissier = new Profile();
         $prof_caissier->setLibelle("CAISSIER");
         $manager->persist($prof_caissier);
-
-        $manager->flush();
+/*
 
         $this->addReference('super_admin', $prof_supadmin);
         $this->addReference('admin', $prof_admin);
         $this->addReference('super_caissier', $prof_caissier);
 
         $ref_supadmin = $this->getReference('super_admin');
-
+*/
         $user = new User();
 
         $user->setUsername("mbengue");
         $user->setPassword($this->encoder->encodePassword($user, 'aziztara'));
         $user->setIsActive(true);
-        $user->setProfile($ref_supadmin);
-        $user->setRoles(["SUPER_ADMIN"]);
+        $user->setProfile($prof_supadmin);
+       // $user->setRoles(["ROLE_SUPER_ADMIN"]);
 
         $manager->persist($user);
         $manager->flush();
